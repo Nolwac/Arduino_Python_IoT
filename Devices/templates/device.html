@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Control your device from any location</title>
+</head>
+<body>
+	<div>
+		<h2>{%if state == True%}Your device is currently ON in which ever location it is now{%else%}Your device is currently OFF in which ever location it is now{%endif%}</h2>
+		<form action="{% url 'switch' instance.id %}" method="POST">
+			{%csrf_token%}
+			<input type="checkbox" {%if state == True%}checked{%endif%} name="state"><br>
+			<input type="submit" value="Save Change" name="">
+		</form>
+	</div>
+</body>
+</html>
