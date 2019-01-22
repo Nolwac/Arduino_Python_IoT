@@ -81,6 +81,10 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+dj_url = dj_database_url.config()
+DATABASES['default'].update(dj_url)
+# DATABASES['default']['CONN_MAX_AGE']=500
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -117,5 +121,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+# djang-heroku setting
+import django_heroku
+django_heroku.settings(locals())
 
 STATIC_URL = '/static/'
+
+# location where you will store your static files like bootstrap
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "static"),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
