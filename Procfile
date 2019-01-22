@@ -1,1 +1,2 @@
-web: gunicorn IoT.wsgi 
+web: gunicorn IoT.wsgi
+release: python manage.py migrate --noinput
